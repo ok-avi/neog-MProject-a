@@ -69,7 +69,7 @@ const Product = () => {
       rating:"all",
       sortBy:"all"
     })
-    // const { data, loading, error } = useFetch(`http://localhost:3000/api/products/category/${productCategory}`)
+    // const { data, loading, error } = useFetch(`https://neog-m-project-a-backend.vercel.app/api/products/category/${productCategory}`)
     
     const [updatedProducts,setUpdatedProducts] = useState(undefined) 
     let filteredProducts 

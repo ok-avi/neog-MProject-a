@@ -10,12 +10,12 @@ const ProductDetails = () => {
   const [quantity,setQuantity] = useState(1)
   const {productId} = useParams()
   const [cartStatus,setCartStatus] = useState(false)
-  const { data, loading, error } =  useFetch(`http://localhost:3000/api/products/${productId}`)
+  const { data, loading, error } =  useFetch(`https://neog-m-project-a-backend.vercel.app/api/products/${productId}`)
   console.log(typeof productId,productId)
 
   function addToCart(productId){
     console.log("worked",productId)
-    fetch(`http://localhost:3000/api/user/add/cart`,{
+    fetch(`https://neog-m-project-a-backend.vercel.app/api/user/add/cart`,{
       method:"POST",
       headers:{
         "Content-Type":"application/json"

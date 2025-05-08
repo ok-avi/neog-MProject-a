@@ -13,13 +13,13 @@ const Login = () => {
   });
   const param = useParams();
   const { data, loading, error } = useFetch(
-    "http://localhost:3000/api/user/680f3af1781afdac18e50245/data"
+    "https://neog-m-project-a-backend.vercel.app/api/user/680f3af1781afdac18e50245/data"
   );
 
   data && console.log(data.user);
   function formHandler(e) {
     e.preventDefault();
-    fetch("http://localhost:3000/api/user/680f3af1781afdac18e50245/data",{
+    fetch("https://neog-m-project-a-backend.vercel.app/api/user/680f3af1781afdac18e50245/data",{
       method:"POST",
       headers:{
         "Content-Type":"application/json"
@@ -34,6 +34,7 @@ const Login = () => {
     <div className="bg-secondary-subtle" style={{ minHeight: "100vh" }}>
       <Nav />
       <main className="container py-5 my-2 ">
+      {loading&&<div className="fs-2 text-warning text-center">Loading...</div>}
         {data && (
           <div className="row">
             <div className="col-lg-2 mb-3   ">

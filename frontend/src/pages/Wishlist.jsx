@@ -5,13 +5,28 @@ import img from "../assets/child.jpg"
 import { Link } from "react-router-dom"
 
 const Wishlist = () => {
-  const {data,loading,error} = useFetch("http://localhost:3000/api/user/680f3af1781afdac18e50245/data")
+  const {data,loading,error} = useFetch("https://neog-m-project-a-backend.vercel.app/api/user/680f3af1781afdac18e50245/data")
   const [updatedData,setUpdatedData] = useState()
   console.log(data)
   
 
   function removeWishlist(productId){
-    fetch("http://localhost:3000/api/user/remove/wishlist",{
+    fetch(`https://neog-m-project-a-backend.vercel.app/api/user/add/cart`,{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({
+        "userId":"680f3af1781afdac18e50245",
+        cartId:productId
+      })
+    })
+    .then(response=>response.json())
+    .then((data)=>{
+      // console.log("cart added")
+    })
+    .catch(error=>console.log(error))
+    fetch("https://neog-m-project-a-backend.vercel.app/api/user/remove/wishlist",{
       method:"POST",
       headers:{
         "Content-Type":"application/json"
@@ -25,7 +40,7 @@ const Wishlist = () => {
     .then(data=>console.log("removed",data))
     .catch(error=>console.log(error))
 
-    fetch("http://localhost:3000/api/user/680f3af1781afdac18e50245/data")
+    fetch("https://neog-m-project-a-backend.vercel.app/api/user/680f3af1781afdac18e50245/data")
     .then(response=>response.json())
     .then(data=>setUpdatedData(data))
     .catch(error=>console.log("error while fetching"))
@@ -48,7 +63,7 @@ const Wishlist = () => {
                   <div className="card-text">{wishlist.name}</div>
                   <div className="card-text">
                     <strong className="fs-5">&#8377;{wishlist.price}</strong>
-                    <button className="btn btn-danger float-end" onClick={()=>removeWishlist(wishlist._id)}>Remove</button>
+                    <button className="btn btn-danger float-end" onClick={()=>removeWishlist(wishlist._id)}>Move to Cart</button>
                   </div>
                 </div>
               </div>

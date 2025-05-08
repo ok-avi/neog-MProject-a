@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Cart = () => {
   const [updatedData, setUpdatedData] = useState();
   const { data, loading, error } = useFetch(
-    `http://localhost:3000/api/user/680f3af1781afdac18e50245/data`
+    `https://neog-m-project-a-backend.vercel.app/api/user/680f3af1781afdac18e50245/data`
   );
   const totalPrice =
     data &&
@@ -18,7 +18,23 @@ const Cart = () => {
 
   console.log(data, totalPrice);
   function removeFromCart(productId) {
-    fetch(`http://localhost:3000/api/user/remove/cart`, {
+    fetch(`https://neog-m-project-a-backend.vercel.app/api/user/add/wishlist`,{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({
+        "userId":"680f3af1781afdac18e50245",
+        "wishlistId": productId
+      })
+    })
+    .then(response=>response.json())
+    .then((data)=>{
+      // setWishlistStatus(true)
+      console.log(data,"wishlist added")
+    })
+    .catch(error=>console.log(error))
+    fetch(`https://neog-m-project-a-backend.vercel.app/api/user/remove/cart`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +49,7 @@ const Cart = () => {
         // console.log(data)
       })
       .catch((error) => console.log(error));
-    fetch("http://localhost:3000/api/user/680f3af1781afdac18e50245/data")
+    fetch("https://neog-m-project-a-backend.vercel.app/api/user/680f3af1781afdac18e50245/data")
       .then((response) => response.json())
       .then((data) => setUpdatedData(data))
       .catch((error) => console.log(error));
@@ -74,7 +90,7 @@ const Cart = () => {
                             onClick={() => removeFromCart(cart._id)}
                             className="btn btn-danger"
                           >
-                            Remove{" "}
+                            Move to wishlist{" "}
                           </button>
                         </div>
                       </div>

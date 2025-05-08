@@ -8,7 +8,7 @@ import child from "../assets/child.jpg"
 const ProductCard = ({product,productCategory}) => {
   const [wishlistStatus,setWishlistStatus] = useState(false)
   function addToWishlist(productId){
-    fetch(`http://localhost:3000/api/user/add/wishlist`,{
+    fetch(`https://neog-m-project-a-backend.vercel.app/api/user/add/wishlist`,{
       method:"POST",
       headers:{
         "Content-Type":"application/json"

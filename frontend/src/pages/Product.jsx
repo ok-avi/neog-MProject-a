@@ -78,7 +78,7 @@ const Product = () => {
   
   const [inputSearch,setInputSearch] = useState()
 
-  const { data, loading, error } = useFetch(`http://localhost:3000/api/products/category/${productCategory}`)
+  const { data, loading, error } = useFetch(`https://neog-m-project-a-backend.vercel.app/api/products/category/${productCategory}`)
   // data&&console.log(data)
   const [updatedProducts, setUpdatedProducts] = useState(undefined);
   let filteredProducts;
@@ -325,6 +325,7 @@ const Product = () => {
         <div className="col bg-white mx-2  py-3 ">
           <div >
             <h3 className="mb-4">Showing All Products</h3>
+            {loading&&<div className="fs-2 text-warning text-center">Loading...</div>}
 
           </div>
           {/* <ProductCard /> */}
