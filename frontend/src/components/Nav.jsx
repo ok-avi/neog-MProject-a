@@ -3,7 +3,7 @@ import { Link, useLocation, useParams } from "react-router-dom"
 
 const Nav = ({searchHandler,inputSearch,setInputSearch}) => {
   const {pathname} = useLocation()
-  console.log(pathname,pathname.split("/")[1])
+  // console.log(pathname,pathname.split("/")[1])
 
   return (
     <>

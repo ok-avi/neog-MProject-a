@@ -145,9 +145,23 @@ const Product = () => {
 
   function searchHandler(e){
     e.preventDefault()
-    console.log("worked search",inputSearch)
+    // console.log("worked search",inputSearch)
   }
 
+  function clearFilterBtn(){
+    setFilter(prev=>({
+      ...prev,
+      price:"all",
+      category:[],
+      rating:"all",
+      sortBy:"all",
+    }))
+    document.forms["myForm"].reset();
+    console.log("clear filter")
+  }
+  function formHandler(e){
+    e.preventDefault()
+  }
   return (
     <div className="bg-dark-subtle ">
       <Nav searchHandler={searchHandler} inputSearch={inputSearch} setInputSearch={setInputSearch} />
@@ -157,10 +171,12 @@ const Product = () => {
           className="col-lg-3 bg-white mx-2 px-0 py-3"
           style={{ height: "100%" }}
         >
+          <form onSubmit={formHandler} name="myForm">
           <div className="px-3 d-flex align-items-center justify-content-between">
-            <h3 className="">Filter</h3>
+            <h3 className="">Filter {filter.price}</h3>
             <button
               className="btn text-decoration-underline"
+              onClick={clearFilterBtn}
             >
               <h5>Clear</h5>
             </button>
@@ -321,6 +337,7 @@ const Product = () => {
               </label>
             </div>
           </div>
+          </form>
         </div>
         <div className="col bg-white mx-2  py-3 ">
           <div >
@@ -332,11 +349,11 @@ const Product = () => {
           <div className="row">
             {data && updatedProducts
               ? updatedProducts.map((product) => (
-                  <ProductCard product={product} productCategory={productCategory} />
+                  <ProductCard product={product} productCategory={productCategory} key={product._id} />
                 ))
               : filteredProducts &&
                 filteredProducts.map((product) => (
-                  <ProductCard product={product} productCategory={productCategory} />
+                  <ProductCard product={product} productCategory={productCategory} key={product._id} />
                 ))}
           </div>
         </div>
