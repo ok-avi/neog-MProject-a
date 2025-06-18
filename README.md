@@ -1,4 +1,4 @@
-# CRM
+# Shopping
 
 A full-stack E-commerce app to show products details and manage.
 Built with a React frontend, Express/Node backend, MongoDB database.
