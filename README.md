@@ -30,7 +30,7 @@ Create a ```.env``` file in ```/backend``` folder. Store important items in vari
 - Bootstrap
 
 ## Demo Video
-Watch a 5–7 minute walkthrough of the app's main features.[Video Link]()
+Watch a 2 minute walkthrough of the app's main features.[Video Link](https://drive.google.com/file/d/1IRH9rR1o4gscL5gxpzYPv6-SbwCJoMui/view?usp=drive_link)
 
 ## Features
 
